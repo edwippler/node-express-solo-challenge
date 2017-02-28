@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var port = 3000;
+var bodyParser = require('body-parser');
 
 
 // initial jokes provided by the client
@@ -26,10 +27,18 @@ var jokes = [
 // static file requests
 app.use(express.static('server/public'));
 
+// calls use of body-parser
+app.use(bodyParser.urlencoded({extended: true}));
+
 // routes
 app.get('/jokes', function(req, res) {
-  res.send(jokes); 
-})
+  res.send(jokes);
+});
+app.post('/jokes/new', function(req, res) {
+  var newJoke = req.body;
+  console.log(newJoke);
+  res.sendStatus(200); 
+});
 
 // Send index.html file
 app.get('/', function(req, res) {
