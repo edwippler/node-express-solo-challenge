@@ -36,7 +36,7 @@ app.get('/jokes', function(req, res) {
 });
 app.post('/jokes/new', function(req, res) {
   var newJoke = req.body;
-  console.log(newJoke);
+  jokes.push(newJoke);
   res.sendStatus(200); 
 });
 

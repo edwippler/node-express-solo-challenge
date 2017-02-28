@@ -4,18 +4,20 @@ $(document).ready(function() {
   getJokes();
 
 $('button').on('click', function() {
-  newJoke.jokeQuestion = $('#newJokePromt').val();
+  newJoke.jokeQuestion = $('#newJokePrompt').val();
   newJoke.punchLine = $('#newPunchLine').val();
   newJoke.whoseJoke = $('#newJokester').val();
   console.log(newJoke);
+  $('#jokeContainer').empty();
   $.ajax({
     type: 'POST',
     url: '/jokes/new',
-    data: newJoke, 
+    data: newJoke,
     success: function(response){
       console.log(response);
     }
   });
+  getJokes ();
 });
 
 
