@@ -34,10 +34,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/jokes', function(req, res) {
   res.send(jokes);
 });
+
 app.post('/jokes/new', function(req, res) {
   var newJoke = req.body;
   jokes.push(newJoke);
-  res.sendStatus(200); 
+  res.sendStatus(200);
 });
 
 // Send index.html file

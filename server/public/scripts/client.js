@@ -1,22 +1,22 @@
 $(document).ready(function() {
-  // console.log('jquery loaded');
-  var newJoke = {};
+  var newJoke = {}; //will pass in proerties to send object for POST request
   getJokes();
 
 $('button').on('click', function() {
   newJoke.jokeQuestion = $('#newJokePrompt').val();
   newJoke.punchLine = $('#newPunchLine').val();
   newJoke.whoseJoke = $('#newJokester').val();
-  console.log(newJoke);
+  // console.log(newJoke);
   $('#jokeContainer').empty();
   $.ajax({
     type: 'POST',
     url: '/jokes/new',
     data: newJoke,
     success: function(response){
-      console.log(response);
+      alert('Your joke has been added! Lol');
     }
   });
+  emptyFields(); 
   getJokes ();
 });
 
@@ -35,4 +35,10 @@ function getJokes(){
     };
     }
   });
+}
+
+function emptyFields(){
+  $('#newJokePrompt').val('');
+  $('#newPunchLine').val('');
+  $('#newJokester').val('');
 }
