@@ -27,7 +27,9 @@ var jokes = [
 app.use(express.static('server/public'));
 
 // routes
-
+app.get('/jokes', function(req, res) {
+  res.send(jokes); 
+})
 
 // Send index.html file
 app.get('/', function(req, res) {
